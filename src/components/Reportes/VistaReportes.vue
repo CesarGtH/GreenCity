@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md">
-    <div class="q-gutter-y-md" style="max-width: 600px">
+    <div class="q-gutter-y-md" style="max-width: 2000px">
       <q-card>
         <q-tabs
           v-model="tab"
@@ -16,7 +16,7 @@
         </q-tabs>
 
         <q-tab-panels v-model="tab" animated class="bg-primary text-white">
-          <q-tab-panel name="mails">
+          <q-tab-panel name="mails" align="center">
             <div class="text-h4">GreenCity</div>
             <h5>
               Solución que permite a los ciudadanos reportar tanto problemas
@@ -29,7 +29,7 @@
           </q-tab-panel>
 
           <q-tab-panel name="alarms">
-            <div class="text-h4">Ambientales</div>
+            <div class="text-h4">Casos Ambientales</div>
             <h5>Casos en que se ven afectadas los espacios públicos</h5>
             <h5>- Acumulación de basura</h5>
             <h5>- Árboles caídos</h5>
@@ -37,7 +37,7 @@
           </q-tab-panel>
 
           <q-tab-panel name="movies">
-            <div class="text-h4">Delictivos</div>
+            <div class="text-h4">Casos Delictivos</div>
             <h5>
               Actos de personas que atentan contra la integridad de las personas
               o espacios públicos
