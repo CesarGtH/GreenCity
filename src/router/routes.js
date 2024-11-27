@@ -4,6 +4,14 @@ const routes = [
     component: () => import("src/components/auth/LoginForm.vue"),
   },
   {
+    path: "/VistaReportes",
+    component: () => import("src/components/Reportes/VistaReportes.vue"),
+  },
+  {
+    path: "/RegisterForm",
+    component: () => import("src/components/auth/RegisterForm.vue"),
+  },
+  {
     path: "/informes",
     component: () => import("layouts/MainLayout.vue"),
     children: [

@@ -1,9 +1,11 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <br />
+    <div class="container"></div>
     <div class="text-center q-mb-xl">
-      <div class="text-h4 text-primary">Green City App</div>
+      <div class="text-h4 Text">Green City App</div>
     </div>
+
     <q-page-container class="flex flex-center full-height">
       <q-card style="width: 350px">
         <q-card-section>
@@ -41,7 +43,7 @@
           <q-btn
             label="Iniciar sesión"
             type="submit"
-            color="primary"
+            color="secondary"
             unelevated
             class="full-width q-mt-md"
             @click="inicioSesion"
@@ -51,7 +53,7 @@
               label="Registrarse"
               flat
               color="secondary"
-              @click="goToRegister"
+              to="/RegisterForm"
             />
           </div>
         </q-card-section>
@@ -60,7 +62,32 @@
   </q-layout>
 </template>
 
-<style></style>
+<style>
+.text-h4 {
+  font-size: 4.5em;
+  margin-top: 2%;
+}
+.text-h6 {
+  font-size: 1.8em;
+  text-align: center;
+  color: #287039;
+}
+.Text {
+  color: #63c379;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  text-align: center; /* Centra el contenido dentro del contenedor */
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/2/21/Parque_Kennedy.jpg"); /* Ruta de la imagen de fondo */
+  background-size: cover; /* Ajusta la imagen para que cubra todo el contenedor */
+  background-position: center; /* Centra la imagen en el contenedor */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  padding: 70px; /* Añade espacio alrededor del contenido */
+}
+</style>
 
 <script>
 export default {
@@ -94,7 +121,7 @@ export default {
             timeout: 5000,
           });
 
-          this.$router.push("/MainLayout");
+          this.$router.push("/VistaReportes");
         })
         .catch((error) => {
           //Ocurrió un error
