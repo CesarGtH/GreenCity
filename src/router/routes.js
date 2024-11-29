@@ -1,5 +1,16 @@
 const routes = [
   {
+    path: "/dashboard",
+    component: () => import("layouts/MainLayout.vue"),
+    children: [
+      { path: "", component: () => import("pages/IndexPage.vue") },
+      {
+        path: "reporte",
+        component: () => import("pages/ReportePage.vue"),
+      },
+    ],
+  },
+  {
     path: "/",
     component: () => import("src/components/auth/LoginForm.vue"),
   },
@@ -10,6 +21,10 @@ const routes = [
   {
     path: "/RegisterForm",
     component: () => import("src/components/auth/RegisterForm.vue"),
+  },
+  {
+    path: "/InformesPage",
+    component: () => import("src/components/Reportes/MapView.vue"),
   },
   {
     path: "/informes",

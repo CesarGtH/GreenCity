@@ -1,50 +1,64 @@
 <template>
   <div class="q-pa-md">
     <div class="q-gutter-y-md" style="max-width: 2000px">
+      <q-card-section>
+        <div class="container"></div>
+        <div class="text-h3">Green City</div>
+        <div class="text-h6 font-weight-bold">
+          La Municipalidad de Lima coloca a disposición esta solución que
+          permite a los ciudadanos reportar tanto problemas ambientales como
+          eventos delictivos en su ciudad. La plataforma ofrecerá la posibilidad
+          de visualizar reportes por ubicación y categoría, además de hacer un
+          seguimiento del estado del problema reportado por las autoridades
+          locales, con la opción de que los ciudadanos puedan comentar sobre
+          dichos reportes.
+        </div>
+      </q-card-section>
       <q-card>
         <q-tabs
           v-model="tab"
           dense
-          class="bg-grey-2 text-grey-7"
-          active-color="primary"
-          indicator-color="purple"
+          class="bg-green-2 text-grey-7"
+          active-color="secondary"
+          indicator-color="green"
           align="justify"
         >
-          <q-tab name="mails" label="GreenCity" />
-          <q-tab name="alarms" label="Ambientales" />
-          <q-tab name="movies" label="Delictivos" />
+          <q-tab name="caso1" label="Casos Ambientales" />
+          <q-tab name="caso2" label="Casos Delictivos" />
         </q-tabs>
 
-        <q-tab-panels v-model="tab" animated class="bg-primary text-white">
-          <q-tab-panel name="mails" align="center">
-            <div class="text-h4">GreenCity</div>
-            <h5>
-              Solución que permite a los ciudadanos reportar tanto problemas
-              ambientales como eventos delictivos en su ciudad. La plataforma
-              ofrecerá la posibilidad de visualizar reportes por ubicación y
-              categoría, además de hacer un seguimiento del estado del problema
-              reportado por las autoridades locales, con la opción de que los
-              ciudadanos puedan comentar sobre dichos reportes.
-            </h5>
+        <q-tab-panels v-model="tab" animated class="text-dark grey">
+          <q-tab-panel name="caso1">
+            <h6>Casos en que se ven afectadas los espacios públicos</h6>
+            <li>Acumulación de basura</li>
+            <li>Árboles caídos</li>
+            <li>Fugas de agua</li>
+            <q-btn
+              label="Ir a Reportes"
+              flat
+              color="secondary"
+              type="submit"
+              to="/dashboard/reporte"
+              align="center"
+            />
           </q-tab-panel>
 
-          <q-tab-panel name="alarms">
-            <div class="text-h4">Casos Ambientales</div>
-            <h5>Casos en que se ven afectadas los espacios públicos</h5>
-            <h5>- Acumulación de basura</h5>
-            <h5>- Árboles caídos</h5>
-            <h5>- Fugas de agua</h5>
-          </q-tab-panel>
-
-          <q-tab-panel name="movies">
-            <div class="text-h4">Casos Delictivos</div>
-            <h5>
+          <q-tab-panel name="caso2">
+            <h6>
               Actos de personas que atentan contra la integridad de las personas
               o espacios públicos
-            </h5>
-            <h5>- Robos</h5>
-            <h5>- Vandalismo</h5>
-            <h5>- Extorsión</h5>
+            </h6>
+            <li>Robos</li>
+            <li>Vandalismo</li>
+            <li>Extorsión</li>
+            <q-btn
+              label="Ir a Reportes"
+              flat
+              type="submit"
+              color="secondary"
+              to="/dashboard/reporte"
+              align="center"
+            />
           </q-tab-panel>
         </q-tab-panels>
       </q-card>
@@ -52,13 +66,45 @@
   </div>
 </template>
 
+<style scoped>
+.q-tab-panel {
+  line-height: 1.2;
+  font-size: 16px;
+}
+.q-tab-panels {
+  background-color: #ecfff1;
+  text-emphasis-color: #287039;
+  height: auto;
+}
+.q-tabs {
+  color: #287039;
+}
+.text-h3 {
+  text-align: center;
+  margin-top: 0.5%;
+  color: #287039;
+}
+.text-h6 {
+  font-size: large;
+  margin-top: 0.5%;
+}
+.container {
+  text-align: center; /* Centra el contenido dentro del contenedor */
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/2/21/Parque_Kennedy.jpg"); /* Ruta de la imagen de fondo */
+  background-size: cover; /* Ajusta la imagen para que cubra todo el contenedor */
+  background-position: center; /* Centra la imagen en el contenedor */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  padding: 70px; /* Añade espacio alrededor del contenido */
+}
+</style>
+
 <script>
 import { ref } from "vue";
 
 export default {
   setup() {
     return {
-      tab: ref("mails"),
+      tab: ref("caso1"),
     };
   },
 };

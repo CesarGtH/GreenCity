@@ -6,7 +6,7 @@
         <div class="input-box">
           <input
             type="text"
-            v-model="user.nombre"
+            v-model="usuarios.nombre"
             placeholder="Ingresar nombre completo"
             required
           />
@@ -14,63 +14,31 @@
         <div class="input-box">
           <input
             type="text"
-            v-model="user.lastName"
-            placeholder="Enter your last name"
+            v-model="usuarios.email"
+            placeholder="Ingresar correo electrónico"
             required
           />
         </div>
         <div class="input-box">
-          <input
-            type="date"
-            v-model="user.dateOfBirth"
-            placeholder="Enter your birthday"
-            required
-          />
-        </div>
-        <div class="input-box">
-          <input
-            type="text"
-            v-model="user.country"
-            placeholder="Enter your country"
-            required
-          />
-        </div>
-        <div class="input-box">
-          <input
-            type="text"
-            v-model="user.address"
-            placeholder="Enter your address"
-            required
-          />
-        </div>
-        <div class="input-box">
-          <input
-            type="text"
-            v-model="user.email"
-            placeholder="Enter your email"
-            required
-          />
-        </div>
-        <div class="input-box">
-          <input type="password" placeholder="Create password" required />
+          <input type="password" placeholder="Ingresar contraseña" required />
         </div>
         <div class="input-box">
           <input
             type="password"
-            v-model="user.password"
-            placeholder="Confirm password"
+            v-model="usuarios.contrasena"
+            placeholder="Confirmar contraseña"
             required
           />
         </div>
         <div class="policy">
           <input type="checkbox" />
-          <h3>I accept all terms & condition</h3>
+          <h3>Acepto todos los términos y condiciones</h3>
         </div>
         <div class="input-box button">
-          <input type="button" value="Register Now" @click="registrarUsuario" />
+          <input type="button" value="Registrarse" @click="registrarUsuario" />
         </div>
         <div class="text">
-          <h3>Already have an account? <a href="#">Login now</a></h3>
+          <h3>Ya tengo una cuenta <a href="#">Iniciar Seción</a></h3>
         </div>
       </form>
     </div>
@@ -85,12 +53,16 @@
   font-family: "Poppins", sans-serif;
 }
 .div-form {
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #4070f4;
+  background: url("https://upload.wikimedia.org/wikipedia/commons/2/21/Parque_Kennedy.jpg");
+  background-size: cover;
+  opacity: 0.8;
+  height: 945px;
+  width: 100%;
 }
+
 .wrapper {
   position: relative;
   max-width: 430px;
@@ -99,10 +71,10 @@
   padding: 34px;
   border-radius: 6px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  margin-left: 40%;
+  margin-left: 5%;
 }
 .wrapper h2 {
-  font-size: 1.8em;
+  font-size: 2em;
   text-align: relative;
   color: #287039;
   font-weight: 3600;
@@ -115,7 +87,7 @@
   height: 3px;
   width: 28px;
   border-radius: 12px;
-  background: #4070f4;
+  background: #13aa9bf2;
 }
 .wrapper form {
   margin-top: 30px;
@@ -139,7 +111,7 @@ form .input-box input {
 }
 .input-box input:focus,
 .input-box input:valid {
-  border-color: #4070f4;
+  border-color: #13aa9bf2;
 }
 form .policy {
   display: flex;
@@ -155,11 +127,11 @@ form h3 {
   color: #fff;
   letter-spacing: 1px;
   border: none;
-  background: #4070f4;
+  background: #13aa9bf2;
   cursor: pointer;
 }
 .input-box.button input:hover {
-  background: #0e4bf1;
+  background: #13aa9bf2;
 }
 form .text h3 {
   color: #333;
@@ -167,7 +139,7 @@ form .text h3 {
   text-align: center;
 }
 form .text h3 a {
-  color: #4070f4;
+  color: #13aa9bf2;
   text-decoration: none;
 }
 form .text h3 a:hover {
@@ -179,10 +151,10 @@ export default {
   name: "RegisterForm",
   methods: {
     registrarUsuario() {
-      let endpointSignUp = "/api/User/SignUp";
+      let endpointSignUp = "/api/Usuarios/SignUp";
 
       this.$api
-        .post(endpointSignUp, this.user)
+        .post(endpointSignUp, this.usuarios)
         .then((response) => {
           console.log("Esta es la respuesta: " + JSON.stringify(response));
           this.$q.notify({
@@ -206,14 +178,10 @@ export default {
   },
   data() {
     return {
-      user: {
-        firstName: "",
-        lastName: "",
-        dateOfBirth: "",
-        country: "",
-        address: "",
+      usuarios: {
+        nombre: "",
         email: "",
-        password: "",
+        contrasena: "",
       },
     };
   },
