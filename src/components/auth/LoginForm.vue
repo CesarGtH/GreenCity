@@ -121,7 +121,7 @@ export default {
             timeout: 5000,
           });
 
-          this.$router.push("/dashboard");
+          this.$router.push("/VistaReportes");
         })
         .catch((error) => {
           //Ocurrió un error

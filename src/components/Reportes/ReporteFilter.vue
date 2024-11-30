@@ -1,5 +1,5 @@
 <template>
-  <h6>Filtros</h6>
+  <h6 class="centrado">Filtros:</h6>
   <div class="Estado-filter">
     <q-select
       label="Estado Reporte"
@@ -8,23 +8,53 @@
       :options="estadoreporte"
       option-value="id"
       option-label="estado"
-      @update:model-value="onChange"
+      @update:model-value="onChangeEstado"
     />
   </div>
   <div class="ubicacion-filter">
-    <q-select label="Ubicación" v-model="model" filled :options="ubicaciones" />
+    <q-select
+      label="Ubicación"
+      v-model="ubicacionSelected"
+      filled
+      :options="ubicaciones"
+      @update:model-value="onChangeUbicacion"
+    />
+  </div>
+  <div class="categoria-filter">
+    <q-select
+      label="Categoría"
+      v-model="categoriaSelected"
+      filled
+      :options="categorias"
+      @update:model-value="onChangeCategoria"
+    />
   </div>
 </template>
 
-<style></style>
+<style>
+.Estado-filter,
+.ubicacion-filter,
+.categoria-filter {
+  margin-bottom: 1px;
+  width: 1000px;
+  margin-left: 30%;
+}
+.centrado {
+  text-align: center;
+  margin-bottom: -0%;
+  margin-left: -35%;
+}
+</style>
 
 <script>
 export default {
   name: "ReporteFilter",
-  emits: ["estadoreporteCambiada"],
+  emits: ["filtroCambiado"],
   data() {
     return {
-      model: null,
+      estadoreporteSelected: null,
+      ubicacionSelected: null,
+      categoriaSelected: null,
       ubicaciones: [
         "San Borja",
         "San Isidro",
@@ -34,17 +64,22 @@ export default {
         "San Miguel",
         "Jesús María",
       ],
+      categorias: ["Ambientales", "Delictivos"],
       estadoreporte: [],
-      estadoreporteSelected: null,
     };
   },
   mounted() {
     this.cargarEstadoReportes();
   },
   methods: {
-    onChange(value) {
-      console.log("El valor seleccionado es: ", value.id);
-      this.$emit("estadoreporteCambiada", value.id);
+    onChangeEstado(value) {
+      this.$emit("filtroCambiado", { tipo: "estado", valor: value });
+    },
+    onChangeUbicacion(value) {
+      this.$emit("filtroCambiado", { tipo: "ubicacion", valor: value });
+    },
+    onChangeCategoria(value) {
+      this.$emit("filtroCambiado", { tipo: "categoria", valor: value });
     },
     cargarEstadoReportes() {
       let endpointURL = "/api/EstadoReportes";

@@ -8,6 +8,7 @@ const routes = [
         path: "reporte",
         component: () => import("pages/ReportePage.vue"),
       },
+      { path: "comentario", component: () => import("pages/CommentPage.vue") },
     ],
   },
   {
@@ -18,26 +19,14 @@ const routes = [
     path: "/VistaReportes",
     component: () => import("src/components/Reportes/VistaReportes.vue"),
   },
+
   {
     path: "/RegisterForm",
     component: () => import("src/components/auth/RegisterForm.vue"),
   },
   {
-    path: "/InformesPage",
-    component: () => import("src/components/Reportes/MapView.vue"),
-  },
-  {
-    path: "/informes",
-    component: () => import("layouts/MainLayout.vue"),
-    children: [
-      {
-        path: "",
-        component: () => import("pages/InformesPage.vue"),
-
-        path: "report",
-        component: () => import("pages/ReportPage.vue"),
-      },
-    ],
+    path: "/ReporteForm",
+    component: () => import("src/components/Reportes/ReporteForm.vue"),
   },
 
   // Always leave this as last one,
