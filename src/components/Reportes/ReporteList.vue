@@ -27,13 +27,14 @@
 }
 .center {
   font-size: 4em;
-  text-align: center;
+  text-align: left;
   color: #287039;
   margin-left: 30%;
   margin-bottom: 5%;
+  margin-top: 5%;
 }
 .ingresar-reporte {
-  margin-right: 7%;
+  margin-right: -15%;
 }
 .ReporteFilter {
   width: 30%;

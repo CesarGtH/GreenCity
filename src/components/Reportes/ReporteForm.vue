@@ -131,7 +131,7 @@ export default {
         !this.reporte.ubicacionSeleccionada
       ) {
         this.$q.notify({
-          message: "Por favor, completa todos los campos antes de enviar.",
+          message: "Por favor, completar todos los campos antes de enviar.",
           color: "red",
           position: "top",
         });

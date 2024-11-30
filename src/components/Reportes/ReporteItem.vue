@@ -15,10 +15,32 @@
       <div class="text-h7">{{ reportes.categoria }}</div>
       <q-card-title class="text2">{{ reportes.descripcion }}</q-card-title>
       <div class="text-h6 font-weight-bold">{{ reportes.ubicacion }}</div>
-      <div class="text-center">
-        <q-btn color="secondary" label="Comentar"></q-btn>
-      </div>
+      <div class="text-center"></div>
     </q-card-section>
+    <q-card-actions>
+      <q-btn
+        color="secondary"
+        label="Comentar"
+        @click="mostrarComentario = !mostrarComentario"
+      />
+    </q-card-actions>
+    <div v-if="mostrarComentario">
+      <q-input
+        filled
+        v-model="nuevoComentario"
+        label="Escribe un comentario"
+        type="textarea"
+      />
+      <q-btn color="secondary" label="Enviar" @click="enviarComentario" />
+    </div>
+    <div class="comentarios">
+      <h6>Comentarios</h6>
+      <ul>
+        <li v-for="(comentario, index) in comentarios" :key="index">
+          {{ comentario }}
+        </li>
+      </ul>
+    </div>
   </q-card>
 </template>
 
@@ -72,6 +94,14 @@ export default {
   data() {
     return { text: "Empty" };
   },
+
+  data() {
+    return {
+      mostrarComentario: false,
+      nuevoComentario: "",
+      comentarios: [],
+    };
+  },
   methods: {
     formatearFecha(fecha) {
       const opciones = {
@@ -84,6 +114,31 @@ export default {
         hour12: false,
       };
       return new Date(fecha).toLocaleString("es-ES", opciones);
+    },
+    enviarComentario() {
+      if (this.nuevoComentario.trim()) {
+        let endpointURL = "/api/comentario/InsertComentario";
+        let token = JSON.parse(localStorage.getItem("userData")).data.token;
+        let headers = {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        };
+        let payload = {
+          reporteId: this.reportes.id,
+          comentario: this.nuevoComentario,
+        };
+
+        this.$api
+          .post(endpointURL, payload, headers)
+          .then(() => {
+            this.comentarios.push(this.nuevoComentario); // Agregar comentario localmente
+            this.nuevoComentario = ""; // Limpiar campo
+          })
+          .catch((error) => {
+            console.error("Error al guardar comentario:", error);
+          });
+      }
     },
   },
 };
