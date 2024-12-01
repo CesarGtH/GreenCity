@@ -89,12 +89,12 @@
   margin-top: 0.5%;
 }
 .container {
-  text-align: center; /* Centra el contenido dentro del contenedor */
-  background-image: url("https://upload.wikimedia.org/wikipedia/commons/2/21/Parque_Kennedy.jpg"); /* Ruta de la imagen de fondo */
-  background-size: cover; /* Ajusta la imagen para que cubra todo el contenedor */
-  background-position: center; /* Centra la imagen en el contenedor */
-  background-repeat: no-repeat; /* Evita que la imagen se repita */
-  padding: 70px; /* Añade espacio alrededor del contenido */
+  text-align: center;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/2/21/Parque_Kennedy.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 70px;
 }
 </style>
 

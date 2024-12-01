@@ -132,8 +132,8 @@ export default {
         this.$api
           .post(endpointURL, payload, headers)
           .then(() => {
-            this.comentarios.push(this.nuevoComentario); // Agregar comentario localmente
-            this.nuevoComentario = ""; // Limpiar campo
+            this.comentarios.push(this.nuevoComentario);
+            this.nuevoComentario = "";
           })
           .catch((error) => {
             console.error("Error al guardar comentario:", error);

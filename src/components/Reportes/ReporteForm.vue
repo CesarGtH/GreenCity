@@ -170,7 +170,6 @@ export default {
         });
     },
     resetFormulario() {
-      // Restablecer valores del formulario
       this.reporte = {
         titulo: "",
         descripcion: "",
